@@ -13,9 +13,7 @@ if(isset($_POST['addFriend'])){
         $vars['model']->addFriend();
         View::redirect('/user/'.$_GET['id']);
 }
-
 ?>
-
 <div id="main">
     <div class="container">
         <div class="row">
@@ -24,7 +22,7 @@ if(isset($_POST['addFriend'])){
                 <div class="about-fixed">
                     <div class="my-pic">
                         <?php if($user['avatar']==''){ ?>
-                        <img height="350px" src="../../../public/avatars/none.png" alt="">
+                        <img height="350px" src="../../../public/avatar_none.png" alt="">
                         <?php } else{ ?>
                         <img height="350px" src="../../../public/avatars/<?php echo $user['avatar'] ?>" alt="">
                         <?php } ?>
@@ -158,26 +156,26 @@ if(isset($_POST['addFriend'])){
                                                 </div>
                                             </div>
                                             <?php } ?>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-center">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
                             <?php } ?>
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                             <!--load-more-post-->
                             <div class="col-md-12 text-center">
                                 <a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>

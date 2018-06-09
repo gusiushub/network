@@ -79,7 +79,7 @@ class Users extends Model
         $_SESSION['login']      = $user['login'];
         $_SESSION['active']     = 1;
         $_SESSION['authorize']  = 1;
-
+        $_SESSION['key']        = md5(sha1($user['id'].'+'.time()));
     }
 
     /**
