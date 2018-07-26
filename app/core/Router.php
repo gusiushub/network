@@ -28,8 +28,12 @@ class Router {
     public function getId()
     {
         $routes = explode('/',$_SERVER['REQUEST_URI']);
-        if (!empty($routes[2])) {
-            return $routes[2];
+
+        if (!empty($routes[2]) ) {
+            $routes[2] = (int)$routes[2];
+            if (is_int($routes[2])) {
+                return $routes[2];
+            }
         }
     }
 

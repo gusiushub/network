@@ -175,8 +175,9 @@ class Main extends Model
     }
 
     /**
+     * получить подписки
      * @param $data
-     * @return \app\lib\подписки
+     * @return \app\lib\
      */
     public function getSubscriptions($data)
     {
@@ -225,7 +226,9 @@ class Main extends Model
     }
 
     /**
-     * @param $id delete post
+     * delete post
+     *
+     * @param $id
      */
     public function deletePost($id)
     {
@@ -233,8 +236,10 @@ class Main extends Model
     }
 
     /**
+     * возвращает название блога
+     *
      * @param $id
-     * @return \app\lib\название
+     * @return string
      */
     public function getBlogName($id)
     {
@@ -298,5 +303,10 @@ class Main extends Model
     public function find($query)
     {
 
+    }
+
+    public function pagination($start,$limit,$order,$postId)
+    {
+        return $this->comment->pagination($start,$limit,$order,$postId);
     }
 }

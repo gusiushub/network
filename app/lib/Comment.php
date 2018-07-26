@@ -30,4 +30,9 @@ class Comment extends Model
         return $this->queryRows('SELECT * FROM comments WHERE post_id=:post_id
                                             ORDER BY id DESC', array('post_id' => $postId));
     }
+
+    public function pagination($start,$limit,$order,$postId)
+    {
+        return $this->queryRows('select * from comments where post_id=:post_id order by '.$order.' DESC limit '.$start.' , '.$limit,array('post_id'=>$postId));
+    }
 }

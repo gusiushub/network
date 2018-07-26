@@ -20,9 +20,9 @@ class Article extends Model
     {
         if (isset($_POST['title'] , $_POST['content'])) {
             return $this->insert('posts', array(   'title'   => htmlspecialchars($_POST['title']),
-                                                            'content' => htmlspecialchars($_POST['content']),
-                                                            'date'    => htmlspecialchars(date('Y-m-d',time())),
-                                                            'user_id' => htmlspecialchars($_SESSION['id'])));
+                                                        'content' => htmlspecialchars($_POST['content']),
+                                                        'date'    => htmlspecialchars(date('Y-m-d',time())),
+                                                        'user_id' => htmlspecialchars($_SESSION['id'])));
         }
         echo 'Заполните все поля поля!';
     }

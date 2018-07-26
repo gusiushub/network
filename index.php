@@ -2,7 +2,7 @@
 
 define("ROOT", dirname(__FILE__));
 require_once (ROOT.'/app/lib/Dev.php');
-require_once (ROOT.'/app/lib/ClassAutoLoad.php');
+require_once(ROOT . '/app/lib/AutoLoad.php');
 
 use app\core\Router;
 
