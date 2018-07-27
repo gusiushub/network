@@ -29,7 +29,7 @@
     </div>
 </div>
 <!-- Footer Start -->
-<div class="col-md-12 page-body margin-top-50 footer navbar-fixed-bottom row-fluid">
+<div class="col-lg-12 page-body margin-top-50 footer navbar-fixed-bottom row-fluid">
     <footer>
         <ul class="menu-link">
             <li><a href="/about">О проекте</a></li>

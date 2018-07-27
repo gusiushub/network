@@ -14,7 +14,6 @@ if(isset($_POST['addFriend'])){
         View::redirect('/user/'.$_GET['id']);
 }
 $comment = $vars['model']->pagination(8,3,3,37);
-//var_dump($vars['model']->pagination(8,3,3,37));
 $model = $vars['model'];
 ?>
 <div id="main">
@@ -41,9 +40,9 @@ $model = $vars['model'];
                     <div class="my-detail">
                         <div class="white-spacing">
                             <?php if($vars['model']->activeStatus()==1) { ?>
-                            <small>Online</small>
+                                <span class="label label-success" style="color:white"><small>Online</small></span>
                             <?php } else { ?>
-                            <small>Offline</small>
+                                <span class="label label-dange" style="color:white"><small>Online</small></span>
                             <?php } ?>
                             <h1><?php echo $user['first_name'].' '.$user['last_name']; ?></h1>
                             <?php if($_SESSION['id']!=$_GET['id']) { ?>
@@ -89,7 +88,6 @@ $model = $vars['model'];
                         </div>
                         <!-- Blog Post Start -->
                         <?php if($_SESSION['id'] == $_GET['id']) { ?>
-<!--                        <div class="container">-->
                             <br>
                             <br>
                             <br>
@@ -115,6 +113,7 @@ $model = $vars['model'];
                                         View::redirect('/user/' . $_SESSION['id']);
                                     }
                                 } ?>
+                                <div class="jumbotron">
                                 <input type="hidden" value="<?php echo $var['id'] ;?>" id="post_id">
                                 <div class="post-title">
                                     <a href="#"><h1><?php  echo $var['title'];?></h1></a>
@@ -122,9 +121,8 @@ $model = $vars['model'];
                                 <div class="post-info">
                                     <span><?php echo $var['date']; ?>/ by <a href="#" target="_blank"><?php echo $user['first_name'].' '.$user['last_name'] ?></a></span>
                                     <br>
-<!--                                    <br>-->
                                 </div>
-                                <p class="text-center" ><?php echo $var['content']; ?></p>
+                                <div class="text-center" ><?php echo $var['content']; ?></div>
                                 <?php if($_SESSION['id'] == $_GET['id']) { ?>
                                 <form method="POST">
                                     <input name="<?php echo 'del'.$var['id']?>" class="btn-link" type="submit" value="Удалить" style="float: right;">
@@ -132,7 +130,7 @@ $model = $vars['model'];
                                 <?php } ?>
                                 <?php $postVar->addComment($var['id']); ?>
                                 <div class="like btn-link"  id="<?php echo 'like'.$var['id']; ?>">Like[<b  id="<?php echo 'likes'.$var['id']; ?>"><?php  echo $var['likes']; ?></b>]</div>
-
+                                </div>
                                 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
                                 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css" />
 
@@ -243,12 +241,11 @@ $model = $vars['model'];
                                                 <?php
                                                 $commentCount = $model->getComment($var['id']);
                                                 $commentCount = count($commentCount);
-                                                $commentId = $var['id'];
                                                 //var_dump($commentCount);
-                                                if ($commentCount>0) {
-                                                    for ($i = 0; $i < 3; $i++) {
-                                                        $comment = $model->pagination(3, 3, 3, $commentId);
-                                                        //var_dump($comment);
+                                                $commentId = $var['id'];
+                                                if ($commentCount>2) {
+                                                    for ($j = 0; $j < 3 ; $j++) {
+                                                        $comment = $model->pagination(1, 3, 1, $commentId);
                                                         ?>
                                                         <div class="media-block">
                                                             <a class="media-left" href="#"><img
@@ -257,28 +254,25 @@ $model = $vars['model'];
                                                                         src="http://bootstraptema.ru/snippets/icons/2016/mia/1.png"></a>
                                                             <div class="media-body">
                                                                 <div class="mar-btm">
-                                                                    <a href="#"
-                                                                       class="btn-link text-semibold media-heading box-inline">
-                                                                        <?php $userInfo = $model->userId($comment[$i]['user_id']); ?>
-                                                                        <?php echo $userInfo['login'] ?></a>
-                                                                    <p class="text-muted text-sm"><i
-                                                                                class="fa fa-mobile fa-lg"></i> -
-                                                                        19-06-2016</p>
+                                                                    <a href="#" class="btn-link text-semibold media-heading box-inline">
+                                                                        <?php
+                                                                        $commentInfo = $model->getComment($var['id']);
+                                                                        $userInfo = $model->userId($commentInfo[$j]['user_id']); //var_dump($commentInfo[$j]);
+                                                                            echo $userInfo['login'];
+                                                                     ?>
+                                                                    </a>
+                                                                    <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - 19-06-2016</p>
                                                                 </div>
                                                                 <p><?php
-                                                                    //var_dump($var['id']);
-                                                                            if (!empty($comment)) {
-                                                                               echo $comment[$i]['text'];
-                                                                            }
-
-                                                                    ?></p>
+                                                                    if (!empty($commentInfo[$j])) {
+                                                                       echo $commentInfo[$j]['text'];
+                                                                    } ?></p>
                                                                 <div class="pad-ver">
                                                                     <div class="btn-group">
                                                                         <a class="btn btn-sm btn-default btn-hover-success"
                                                                            href="#"><i class="fa fa-thumbs-up"></i></a>
                                                                         <a class="btn btn-sm btn-default btn-hover-danger"
-                                                                           href="#"><i
-                                                                                    class="fa fa-thumbs-down"></i></a>
+                                                                           href="#"><i class="fa fa-thumbs-down"></i></a>
                                                                     </div>
                                                                     <a class="btn btn-sm btn-default btn-hover-primary"
                                                                        href="#">Ответить</a>
@@ -288,76 +282,168 @@ $model = $vars['model'];
                                                             <!-- Конец Содержания Новостей -->
                                                         </div>
 
+                                                        <?php } ?>
+                                                    <nav class="text-center" >
+                                                        <ul  class="pagination">
+                                                            <li id="<?php echo 'left'.$var['id']; ?>" class="media-left" style="float: left;" >
+                                                                <a class="page-link" href="#" aria-label="Previous">
+                                                                    <span aria-hidden="true">&laquo;</span>
+                                                                    <span class="sr-only">Previous</span>
+                                                                </a>
+                                                            </li>
 
+                                                            <li id="<?php echo 'right'.$var['id']; ?>" class="media-right" style="float: right;" >
+                                                                <a class="page-link" href="#" aria-label="Next">
+                                                                    <span aria-hidden="true">&raquo;</span>
+                                                                    <span class="sr-only">Next</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </nav>
+                                                    <?php } elseif ($commentCount==2)
+                                                    for ($j = 0; $j < 2 ; $j++){
+                                                    ?>
+                                                        <div class="media-block">
+                                                            <a class="media-left" href="#"><img
+                                                                        class="img-circle img-sm"
+                                                                        alt="Профиль пользователя"
+                                                                        src="http://bootstraptema.ru/snippets/icons/2016/mia/1.png"></a>
+                                                            <div class="media-body">
+                                                                <div class="mar-btm">
+                                                                    <a href="#" class="btn-link text-semibold media-heading box-inline">
+                                                                        <?php $userInfo = $model->userId($comment[$j]['user_id']); //var_dump($comment[$j]);
+                                                                        if ($userInfo!=false) {
+                                                                            echo $userInfo['login'];
+                                                                        } ?></a>
+                                                                    <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - 19-06-2016</p>
+                                                                </div>
+                                                                <p><?php
+                                                                    if (!empty($comment[$j])) {
+                                                                        //var_dump($comment[$i]['text']);
+                                                                        echo $comment[$j]['text'];
+                                                                    } ?></p>
+                                                                <div class="pad-ver">
+                                                                    <div class="btn-group">
+                                                                        <a class="btn btn-sm btn-default btn-hover-success"
+                                                                           href="#"><i class="fa fa-thumbs-up"></i></a>
+                                                                        <a class="btn btn-sm btn-default btn-hover-danger"
+                                                                           href="#"><i class="fa fa-thumbs-down"></i></a>
+                                                                    </div>
+                                                                    <a class="btn btn-sm btn-default btn-hover-primary"
+                                                                       href="#">Ответить</a>
+                                                                </div>
+                                                                <hr>
+                                                            </div>
+                                                            <!-- Конец Содержания Новостей -->
+                                                        </div>
                                                         <?php
                                                     }
-                                                }
-                                                ?>
+                                                    elseif ($commentCount==1) { ?>
+                                                    <div class="media-block">
+                                                        <a class="media-left" href="#"><img
+                                                                    class="img-circle img-sm"
+                                                                    alt="Профиль пользователя"
+                                                                    src="http://bootstraptema.ru/snippets/icons/2016/mia/1.png"></a>
+                                                        <div class="media-body">
+                                                            <div class="mar-btm">
+                                                                <a href="#" class="btn-link text-semibold media-heading box-inline">
+                                                                    <?php
+                                                                    $commentInfo = $model->getComment($var['id']);
+                                                                    $userInfo = $model->userId($commentInfo[0]['user_id']);// var_dump($userInfo);
+                                                                    if ($userInfo!=false) {
+                                                                        echo $userInfo['login'];
+                                                                    } ?></a>
+                                                                <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> - 19-06-2016</p>
+                                                            </div>
+                                                            <p><?php
+                                                                if (!empty($comment[0])) {
+                                                                    //var_dump($comment[$i]['text']);
+                                                                    echo $comment[0]['text'];
+                                                                }
+
+                                                                ?></p>
+                                                            <div class="pad-ver">
+                                                                <div class="btn-group">
+                                                                    <a class="btn btn-sm btn-default btn-hover-success"
+                                                                       href="#"><i class="fa fa-thumbs-up"></i></a>
+                                                                    <a class="btn btn-sm btn-default btn-hover-danger"
+                                                                       href="#"><i class="fa fa-thumbs-down"></i></a>
+                                                                </div>
+                                                                <a class="btn btn-sm btn-default btn-hover-primary"
+                                                                   href="#">Ответить</a>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+
+                                                        <!-- Конец Содержания Новостей -->
+                                                    </div>
+                                               <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div><!-- /.row -->
-                                </section><!-- /.container -->
-<!--                                    --><?php //$comments = $postVar->getComment($var['id']);
-//                                    $count = count($comments);
-//                                        for ($i=0;$i<$count;$i++)
-//                                        { ?>
-<!--                                            <div class="container">-->
-<!--                                                <div class="row align-items-start">-->
-<!--                                                    <div class="col-md">-->
-<!--                                                        <h4 >--><?php //echo $user['login']; ?><!--</h4>-->
-<!--                                                    </div>-->
-<!--                                                    <div class="col-md">-->
-<!--                                                        <img style="width: 64px"  src="--><?php //echo '../../../public/avatars/'.$user['avatar']?><!--">-->
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="row">-->
-<!--                                                <div class="col-md-4"></div>-->
-<!--                                                <div class="col-md-5">-->
-<!--                                                    <div id="--><?php //echo 'comtText'.$var['id']; ?><!--">-->
-<!--                                                        --><?php
-//                                                        $userId = (int)$comments[$i]['user_id'];
-//                                                        $user = $postVar->userId($userId);
-//                                                        echo $comments[$i]['text']; ?>
-<!--                                                    </div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            --><?php //} ?>
+                                    </div>
+                                </section>
                             <?php } ?>
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
                         </div>
                     </div>
                     <!-- Blog Post End -->
-<!--                </div>-->
-                <!-- Footer Start -->
-                <div class="col-md-12 page-body margin-top-50 footer ">
-                    <footer>
-                        <ul class="menu-link">
-                            <li><a href="/about">О проекте</a></li>
-                            <li><a href="/feedback">Связаться с нами</a></li>
-                        </ul>
-                        <p>© Copyright 2018. All rights reserved</p>
-                    </footer>
+
+                    <!-- Footer Start -->
+                    <div class="col-md-12 page-body margin-top-50 footer ">
+                        <footer>
+                            <ul class="menu-link">
+                                <li><a href="/about">О проекте</a></li>
+                                <li><a href="/feedback">Связаться с нами</a></li>
+                            </ul>
+                            <p>© Copyright 2018. All rights reserved</p>
+                        </footer>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".right").click(function () {
+                    var post_id = $(this).attr("id");
+                    scroll($(this).attr("id"));
+                });
+            });
+
+            function leftscroll(id) {
+                var uri = id.slice(-2);
+                $.ajax({
+                    url: "/leftscroll/"+uri,
+                    type: "POST",
+                    data: {'post_id': id},
+                    dataType: "json",
+                    success: function(data) {
+                        if(data.result == 'success'){
+                            var count = parseInt($("#likes"+uri).html());
+                            $("#likes"+uri).html(count+1);
+                        }else{
+                            alert("Error");
+                        }
+                    }
+                });
+            }
+
+            function rightscroll(id) {
+                var uri = id.slice(-2);
+                $.ajax({
+                    url: "/rightscroll/"+uri,
+                    type: "POST",
+                    data: {'post_id': id},
+                    dataType: "json",
+                    success: function(data) {
+                        if(data.result == 'success'){
+                            var count = parseInt($("#likes"+uri).html());
+                            $("#likes"+uri).html(count+1);
+                        }else{
+                            alert("Error");
+                        }
+                    }
+                });
+            }
+        </script>

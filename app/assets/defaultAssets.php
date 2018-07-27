@@ -67,6 +67,7 @@ class defaultAssets
             '<script type="text/javascript" src="../../template/default/js/jquery.min.js"></script>',
             '<script type="text/javascript" src="../../template/default/js/plugin.js"></script>',
             '<script type="text/javascript" src="../../template/default/js/scripts.js"></script>',
+            '<script type="text/javascript" src="../ajax/like.js"></script>'
             //'<script type="text/javascript" src="../ajax/comment.js" ></script>'
         );
     }
