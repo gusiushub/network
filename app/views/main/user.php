@@ -78,28 +78,31 @@ $model = $vars['model'];
                     <div class="row">
                         <div class="sub-title">
                                 <?php $blogName = $vars['model']->getBlogName($_GET['id']);?>
-                            <ul style="float: left">
-                                <h3>Основная информация:</h3><hr>
+                            <a href="/dialog"><i class="icon-envelope"></i></a>
+                            <h3>Основная информация:</h3>
+                            <hr>
+                            <ul style="float: left; font-size: 14pt">
                                 <li>Страна:</li>
                                 <li>Город:</li>
                                 <li>Дата рождения:</li>
                             </ul>
-
-                            <a href="/dialog"><i class="icon-envelope"></i></a>
                         </div>
                         <!-- Blog Post Start -->
                         <?php if($_SESSION['id'] == $_GET['id']) { ?>
 <!--                        <div class="container">-->
-                        <form class="form-control" method="POST">
-                            <input type="text" class="form-control" name="title" placeholder="Заголовок">
-                            <p> <textarea type="text" class="form-control" name="content" placeholder="Контент"></textarea></p>
+                            <br>
+                            <br>
+                            <br>
+                        <form style="padding: 5px" method="POST">
+                            <p><input  type="text" class="form-control" name="title" placeholder="Заголовок"></p>
+                            <p> <textarea type="text" class="form-control" name="content" placeholder="Текст статьи" style="height: 100px" ></textarea></p>
                             <p>
-                                <input type="file"  name="postFile" style="float: left">
+<!--                                <input type="file"  name="postFile" style="float: left">-->
                                 <input type="submit" class="btn btn-primary" name="post" style="float: right;" value="Опубликовать">
                             </p>
                         </form>
                         <?php } ?>
-                        <h1 class="display-2"><?php echo $blogName['blog_name'] ;?></h1>
+                        <h1 class="display-2 text-center"><?php echo $blogName['blog_name'] ;?></h1>
                         <div class="col-md-12 content-page">
                             <?php
                             $postVar = $vars['model'];
@@ -134,7 +137,7 @@ $model = $vars['model'];
                                 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css" />
 
                                 <style>
-                                    body{background:url(/images/bg/bg-1.png)}
+                                    body{background:url(/../../template/default/images/bg/bg-1.png)}
 
                                     .img-sm {
                                         width: 46px;
@@ -242,7 +245,7 @@ $model = $vars['model'];
                                                 $commentCount = count($commentCount);
                                                 $commentId = $var['id'];
                                                 //var_dump($commentCount);
-                                                if ($commentCount>3) {
+                                                if ($commentCount>0) {
                                                     for ($i = 0; $i < 3; $i++) {
                                                         $comment = $model->pagination(3, 3, 3, $commentId);
                                                         //var_dump($comment);
@@ -263,9 +266,10 @@ $model = $vars['model'];
                                                                         19-06-2016</p>
                                                                 </div>
                                                                 <p><?php
-                                                                                                                                        if (!empty($comment)) {
-                                                                                                                                            echo $comment[$i]['text'];
-                                                                                                                                        }
+                                                                    //var_dump($var['id']);
+                                                                            if (!empty($comment)) {
+                                                                               echo $comment[$i]['text'];
+                                                                            }
 
                                                                     ?></p>
                                                                 <div class="pad-ver">
