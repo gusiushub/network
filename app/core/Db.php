@@ -18,7 +18,7 @@ class Db
 
     public function connect()
     {
-        $config   = require '/../config/db.php';
+        $config   = require __DIR__.'/../config/db.php';
         $db = new PDO(
             'mysql:host='.$config['host'].';dbname='.$config['db_name'],
             $config['username'],
