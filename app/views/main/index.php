@@ -28,13 +28,14 @@
         </div>
     </div>
 </div>
+</br>
 <!-- Footer Start -->
 <div class="row col-lg-12 page-body margin-top-50 footer navbar-fixed-bottom row-fluid">
-    <footer>
-        <ul class="menu-link">
+    <footer style="height: 50px; ">
+        <ul style="padding-top: 0;" class="menu-link">
             <li><a href="/about">О проекте</a></li>
             <li><a href="/feedback">Связаться с нами</a></li>
         </ul>
-        <p>© Copyright 2018. All rights reserved</p>
+        <small>© Copyright 2018. All rights reserved</small>
     </footer>
 </div>

@@ -31,6 +31,8 @@ use app\assets\defaultAssets;
         </div>
         <!-- Preloader End -->
         <!--Меню-->
+
+<!--        <div class="nav-collapse collapse">-->
         <ul class="menu-link">
             <?php if(isset($_SESSION['id'], $_SESSION['login'])) { ?>
             <li><a href="/user/<?php echo $_SESSION['id'] ?>/">Профиль [<?php echo $_SESSION['login']; ?>]</a></li>
@@ -50,6 +52,7 @@ use app\assets\defaultAssets;
                 <li><a href="/logout">Выход</a></li>
             <?php } ?>
         </ul>
+<!--        </div>-->
         <!--Конец меню-->
 
         <!--Контент-->
