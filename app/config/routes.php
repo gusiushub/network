@@ -85,4 +85,9 @@ return [
         'controller' => 'main',
         'action' => 'all',
     ],
+
+    'event/sms' => [
+        'controller' => 'event',
+        'action' => 'sms',
+    ],
 ];

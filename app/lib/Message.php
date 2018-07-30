@@ -25,12 +25,12 @@ class Message extends Model
      * Принимаем постовые данные. Очистим сообщение от html тэгов
      * и приведем id получателя к типу integer
      */
-    public function sendMessage()
+    public function sendMessage($mes)
     {
 
         $localsocket = 'tcp://127.0.0.1:1234';
         $user = $_SESSION['id'];
-        $message = $_POST['message'];
+        $message = $mes; //$_POST['message'];
 
 // соединяемся с локальным tcp-сервером
         $instance = stream_socket_client($localsocket);

@@ -32,26 +32,26 @@ use app\assets\defaultAssets;
         <!-- Preloader End -->
         <!--Меню-->
 
-<!--        <div class="nav-collapse collapse">-->
-        <ul class="menu-link">
-            <?php if(isset($_SESSION['id'], $_SESSION['login'])) { ?>
-            <li><a href="/user/<?php echo $_SESSION['id'] ?>/">Профиль [<?php echo $_SESSION['login']; ?>]</a></li>
-            <li><a href="/dialog">Сообщения</a></li>
-            <li><a href="/subscribers/<?php echo $_SESSION['id']; ?>/" >Подписчики</a></li>
-            <li><a href="/subscriptions/<?php echo $_SESSION['id']; ?>" >Подписки</a></li>
-            <li><a href="/all">Пользователи</a></li>
-            <?php } ?>
-            <?php if(!isset($_SESSION['id'], $_SESSION['login'])){ ?>
-                <li><a href="/">Авторизация</a></li>
-                <li><a href="/register">Регистрация</a></li>
-                <li><a href="/all">Пользователи</a></li>
-                <li><a href="/about">О проекте</a></li>
-                <li><a href="/contact">Контакты</a></li>
-            <?php } ?>
-            <?php if(isset($_SESSION['id'], $_SESSION['login'])){ ?>
-                <li><a href="/logout">Выход</a></li>
-            <?php } ?>
-        </ul>
+<!--        <div class="collapse">-->
+<!--        <ul class="menu-link ">-->
+<!--            --><?php //if(isset($_SESSION['id'], $_SESSION['login'])) { ?>
+<!--            <li><a href="/user/--><?php //echo $_SESSION['id'] ?><!--/">Профиль [--><?php //echo $_SESSION['login']; ?><!--]</a></li>-->
+<!--            <li><a href="/dialog">Сообщения</a></li>-->
+<!--            <li><a href="/subscribers/--><?php //echo $_SESSION['id']; ?><!--/" >Подписчики</a></li>-->
+<!--            <li><a href="/subscriptions/--><?php //echo $_SESSION['id']; ?><!--" >Подписки</a></li>-->
+<!--            <li><a href="/all">Пользователи</a></li>-->
+<!--            --><?php //} ?>
+<!--            --><?php //if(!isset($_SESSION['id'], $_SESSION['login'])){ ?>
+<!--                <li><a href="/">Авторизация</a></li>-->
+<!--                <li><a href="/register">Регистрация</a></li>-->
+<!--                <li><a href="/all">Пользователи</a></li>-->
+<!--                <li><a href="/about">О проекте</a></li>-->
+<!--                <li><a href="/contact">Контакты</a></li>-->
+<!--            --><?php //} ?>
+<!--            --><?php //if(isset($_SESSION['id'], $_SESSION['login'])){ ?>
+<!--                <li><a href="/logout">Выход</a></li>-->
+<!--            --><?php //} ?>
+<!--        </ul>-->
 <!--        </div>-->
         <!--Конец меню-->
 

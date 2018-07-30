@@ -22,24 +22,27 @@ $usersId = $vars['model']->getSubscriptions($_SESSION['id']);
                 <div class="chat_wrapper">
                     <div class="message_box" id="message_box">
                         <script>
-                            ws = new WebSocket("ws://127.0.0.1:8000/?user=1");
-                            ws.onmessage = function(evt) {alert(evt.data);};
+                            ws = new WebSocket("ws://127.0.0.1:8000/?user=16");
+                            ws.onmessage = function(evt) {
+                                var msg = JSON.parse(evt.data); //PHP sends Json data
+                                var type = msg.type; //message type
+                                var umsg = msg.message; //message text
+                                var uname = msg.name; //user name
+                                var ucolor = msg.color; //color
+
+                                if(type == 'usermsg')
+                                {
+                                    $('#message_box').append("<div><span class=\"user_name\" style=\"color:#"+ucolor+"\">"+uname+"</span> : <span class=\"user_message\">"+umsg+"</span></div>");
+                                }
+                                if(type == 'system')
+                                {
+                                    $('#message_box').append("<div class=\"system_msg\">"+umsg+"</div>");
+                                }
+
+                                $('#message').val(''); //reset text
+                            };
                         </script>
-<!--                        <script>-->
-<!--                            var el = document.getElementById('id');-->
-<!--                            ws = new WebSocket("ws://127.0.0.1:8000/?user=tester01");-->
-<!--                            ws.onmessage = function(evt) {-->
-<!--                                if (typeof elem.textContent !== "undefined") {-->
-<!--                                    el.textContent = evt.data;-->
-<!--                                } else {-->
-<!--                                    el.innerText = 'text';-->
-<!--                                }-->
-<!--                            };-->
-<!--                            el.innetHTML = '<p>'evt.data'</p>'-->
-<!--                        </script>-->
-<!--                        <div id="id">-->
-<!---->
-<!--                        </div>-->
+
                         <?php
                         $messages = $vars['model']->getDialog();
                         foreach ($messages as $message){ ?>
@@ -50,19 +53,34 @@ $usersId = $vars['model']->getSubscriptions($_SESSION['id']);
                             <p><?php echo $message['message']; ?></p>
                             <hr>
                         <?php } ?>
-                        <?php
-                        $vars['model']->sendMessage();//echo '<br>';
-                        if(isset($_POST['sms'])){
-//                            $mes = json_decode($_REQUEST["param"]);
-//                            var_dump($mes);die;
-                            $_SESSION['msg'] = $_POST['message'];
-                           View::redirect('/dialog/'.$_GET['id']);
-                        } ?>
+<!--                        --><?php
+//                        //$vars['model']->sendMessage();//echo '<br>';
+//                        if(isset($_POST['sms'])){
+//                            ?>
+                            <script>
+                                $('#btn').on('click', function() {
+                                    $.post(
+                                        "/event/sms",
+                                        {
+                                            message: "param1",
+                                            // param2: 2
+                                        },
+                                        onAjaxSuccess
+                                    );
+
+                                    function onAjaxSuccess(data) {
+                                        // Здесь мы получаем данные, отправленные сервером и выводим их на экран.
+                                        alert(data);
+                                    }
+                                });
+                            </script>
+
                     </div>
+                    <button  value="Отправить"></button>
                     <div class="panel">
                         <form method="POST">
                         <input class="form-control" type="text" name="message" id="message" placeholder="Message" maxlength="80" style="width:100%" />
-                        <input class="btn btn-primary mb-2" type="submit" name="sms" value="Отправить"><br>
+                        <input  id="btn" class="btn btn-primary mb-2" type="submit" name="sms" value="Отправить"><br>
                         </form>
                     </div>
                 </div>

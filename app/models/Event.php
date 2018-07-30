@@ -5,9 +5,15 @@ namespace app\models;
 
 
 use app\core\Model;
+use app\lib\Message;
 
 class Event extends Model
 {
+    public function __construct()
+    {
+        $this->message = new Message;
+    }
+
     public function getLike($post_id)
     {
         return $this->queryRows('SELECT likes FROM posts WHERE id=:post_id', array('post_id' => $post_id));
@@ -23,5 +29,13 @@ class Event extends Model
     public function scroll()
     {
 
+    }
+
+    /**
+     * отправить сообщение
+     */
+    public function sendMessage()
+    {
+        $this->message->sendMessage();
     }
 }

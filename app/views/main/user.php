@@ -33,14 +33,58 @@ $model = $vars['model'];
                         <?php } else{ ?>
                         <img height="350px" src="../../../public/avatars/<?php echo $user['avatar'] ?>" alt="">
                         <?php } ?>
-                        <a href="javascript:void(0)" class="collapsed" data-target="#menu" data-toggle="collapse"><i class="icon-menu menu"></i></a>
-                        <div id="menu" class="collapse">
-                            <ul class="menu-link">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="work.html">Work</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
+<!--                        <nav class="menu-link">-->
+<!--                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                                <span class="navbar-toggler-icon"></span>-->
+<!--                            </button>-->
+<!--                        <a href="javascript:void(0)" class="collapsed" data-target="#menu" data-toggle="collapse"><i class="icon-menu menu"></i></a>-->
+<!--                            <div class="collapse navbar-collapse" id="navbar1">-->
+<!--                            <div id="menu" class="collapse">-->
+<!--                            <ul class="navbar-nav mr-auto">-->
+<!--                                <li class="nav-item"><a href="about.html">About</a></li>-->
+<!--                                <li class="nav-item"><a href="work.html">Work</a></li>-->
+<!--                                <li class="nav-item"><a href="contact.html">Contact</a></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                        </div>-->
+<!--                        </nav>-->
+                        <nav class="menu-link">
+<!--                            <a class="navbar-brand" href="#">Navbar</a>-->
+<!--                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                                <span class="navbar-toggler-icon"></span>-->
+<!--                            </button>-->
+                            <a href="javascript:void(0)" type="button"  data-target="#menu" data-toggle="collapse"><i class="icon-menu menu"></i></a>
+                            <div class="collapse navbar-collapse" id="menu">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item active">
+<!--                                        <a class="nav-link" href="/user/--><?php //echo $_SESSION['id'] ?><!--/">Проф. [--><?php //echo $_SESSION['login']; ?><!--] <span class="sr-only">(current)</span></a>-->
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Проф. [<?php echo $_SESSION['login']; ?>] </a>
+                                                                                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                                </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/dialog">SmS</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Link</a>
+                                    </li>
+<!--                                    <li class="nav-item">-->
+<!--                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>-->
+<!--                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">-->
+<!--                                            <a class="dropdown-item" href="#">Action</a>-->
+<!--                                            <a class="dropdown-item" href="#">Another action</a>-->
+<!--                                            <div class="dropdown-divider"></div>-->
+<!--                                            <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+                                </ul>
+<!--                                <form class="form-inline my-2 my-lg-0">-->
+<!--                                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--                                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>-->
+<!--                                </form>-->
+                            </div>
+                        </nav>
                     </div>
                     <div class="my-detail">
                         <div class="white-spacing">
@@ -80,15 +124,14 @@ $model = $vars['model'];
             <div class="col-md-9">
                 <div class="col-md-12 page-body">
                     <div class="row">
-                        <div class="sub-title">
+                        <div class="sub-title" >
                                 <?php $blogName = $vars['model']->getBlogName($_GET['id']);?>
                             <a href="/dialog"><i class="icon-envelope"></i></a>
                             <h3>Основная информация:</h3>
                             <hr>
-                            <ul style="float: left; font-size: 14pt">
-                                <li>Страна:</li>
-                                <li>Город:</li>
-                                <li>Дата рождения:</li>
+                            <ul style="float: left; font-size:12pt; font-family: Arial ; list-style-type: none ">
+                                <li>Страна: &nbsp; &nbsp; Россия</li>
+                                <li>Город: &nbsp; &nbsp; &nbsp; Москва</li>
                             </ul>
                         </div>
                         <!-- Blog Post Start -->

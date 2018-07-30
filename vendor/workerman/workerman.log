@@ -94,3 +94,6 @@ Stack trace:
 2018-07-31 00:57:40 pid:1086 worker[none:1091] exit with status 64000
 2018-07-31 00:58:58 pid:1086 Workerman[server.php] stopping ...
 2018-07-31 00:58:58 pid:1086 Workerman[server.php] has been stopped
+2018-07-31 02:11:45 pid:1105 Workerman[server.php] start in DEBUG mode
+2018-07-31 07:26:26 pid:1105 Workerman[server.php] stopping ...
+2018-07-31 07:26:27 pid:1105 Workerman[server.php] has been stopped

@@ -192,13 +192,13 @@ class Main extends Model
          $this->message->readMessage();
     }
 
-    /**
-     * отправить сообщение
-     */
-    public function sendMessage()
-    {
-         $this->message->sendMessage();
-    }
+//    /**
+//     * отправить сообщение
+//     */
+//    public function sendMessage()
+//    {
+//         $this->message->sendMessage();
+//    }
 
     /**
      * кому(сообщение)
