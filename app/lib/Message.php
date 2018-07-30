@@ -27,27 +27,20 @@ class Message extends Model
      */
     public function sendMessage()
     {
-        if(!empty($_POST['message'])) {
-            $message = htmlspecialchars($_POST['message']);
-            $this->exec("SET CHARACTER SET utf8");
-            $sql = "INSERT INTO messages (u_from, u_to, message, flag) VALUES
-                                         (:u_from, :u_to, :message, :flag)";
-            $sth = $this->prepare($sql);
-            $sth->bindValue(':u_from', $_SESSION['id']);// 1 - ID отправителя
-            $sth->bindValue(':u_to', $_GET['id']);//1 - $to
-            $sth->bindValue(':message', $message);
-            $sth->bindValue(':flag', 0);
-            $sth->execute();
-            $error = $sth->errorInfo();
-            /**
-             * Проверка результата запроса
-             */
-            if ($error[0] == 0) {
-                echo 'Сообщение успешно отправлено';
-            } else {
-                echo 'Ошибка отправки сообщения';
-            }
+
+        $localsocket = 'tcp://127.0.0.1:1234';
+        $user = $_SESSION['id'];
+        $message = $_POST['message'];
+
+// соединяемся с локальным tcp-сервером
+        $instance = stream_socket_client($localsocket);
+// отправляем сообщение
+        fwrite($instance, json_encode(['user' => $user, 'message' => $message])  . "\n");
+        if(!empty($message)) {
+            $message = htmlspecialchars($message);
+            $this->db->insert('messages',array('message'=>$message,'u_from'=>$user,'u_to'=>$_GET['id']));
         }
+
     }
 
     /**

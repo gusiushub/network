@@ -50,50 +50,26 @@
 <!--        <p>© Copyright 2018. All rights reserved</p>-->
 <!--    </footer>-->
 <!--</div>-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>chatapp</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 
-    <link rel="stylesheet" href="../../widgets/chat/sitepoint_codes/ratchet_chatapp/css/style.css">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <script>
+        ws = new WebSocket("ws://127.0.0.1:8000/?user=tester01");
+        ws.onmessage = function(evt) {alert(evt.data);};
+    </script>
 </head>
 <body>
-<div id="wrapper">
-    <div id="user-container">
-        <label for="user">What's your name?</label>
-        <input type="text" id="user" name="user">
-        <button type="button" id="join-chat">Join Chat</button>
-    </div>
+<?php
+$localsocket = 'tcp://127.0.0.1:1234';
+$user = 'tester01';
+$message = 'test';
 
-    <div id="main-container" class="hidden">
-        <button type="button" id="leave-room">Leave</button>
-        <div id="messages">
-
-        </div>
-
-        <div id="msg-container">
-            <input type="text" id="msg" name="msg">
-            <button type="button" id="send-msg">Send</button>
-        </div>
-    </div>
-
-</div>
-
-<script id="messages-template" type="text/x-handlebars-template">
-    {{#each messages}}
-    <div class="msg">
-        <div class="time">{{time}}</div>
-        <div class="details">
-            <span class="user">{{user}}</span>: <span class="text">{{text}}</span>
-        </div>
-    </div>
-    {{/each}}
-</script>
-
-<script src="../../widgets/chat/sitepoint_codes/ratchet_chatapp/js/main.js"></script>
+// соединяемся с локальным tcp-сервером
+$instance = stream_socket_client($localsocket);
+// отправляем сообщение
+fwrite($instance, json_encode(['user' => $user, 'message' => $message])  . "\n");
+?>
 </body>
+
 </html>

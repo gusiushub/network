@@ -21,6 +21,25 @@ $usersId = $vars['model']->getSubscriptions($_SESSION['id']);
         <div class="col-lg-9">
                 <div class="chat_wrapper">
                     <div class="message_box" id="message_box">
+                        <script>
+                            ws = new WebSocket("ws://127.0.0.1:8000/?user=1");
+                            ws.onmessage = function(evt) {alert(evt.data);};
+                        </script>
+<!--                        <script>-->
+<!--                            var el = document.getElementById('id');-->
+<!--                            ws = new WebSocket("ws://127.0.0.1:8000/?user=tester01");-->
+<!--                            ws.onmessage = function(evt) {-->
+<!--                                if (typeof elem.textContent !== "undefined") {-->
+<!--                                    el.textContent = evt.data;-->
+<!--                                } else {-->
+<!--                                    el.innerText = 'text';-->
+<!--                                }-->
+<!--                            };-->
+<!--                            el.innetHTML = '<p>'evt.data'</p>'-->
+<!--                        </script>-->
+<!--                        <div id="id">-->
+<!---->
+<!--                        </div>-->
                         <?php
                         $messages = $vars['model']->getDialog();
                         foreach ($messages as $message){ ?>

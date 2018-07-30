@@ -1,0 +1,96 @@
+2018-07-30 22:58:05 pid:1086 Workerman[server.php] start in DEBUG mode
+2018-07-31 00:57:16 pid:1087 Exception: You can't send(NULL) to client, you need to convert it to a string.  in /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Protocols/Websocket.php:236
+Stack trace:
+#0 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(336): Workerman\Protocols\Websocket::encode(NULL, Object(Workerman\Connection\TcpConnection))
+#1 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(22): Workerman\Connection\TcpConnection->send(NULL)
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), Object(stdClass))
+#3 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(668): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"user":"16","m...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #94)
+#5 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Events/Select.php(289): call_user_func_array(Array, Array)
+#6 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(2231): Workerman\Events\Select->loop()
+#7 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1356): Workerman\Worker->run()
+#8 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1188): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#9 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1162): Workerman\Worker::forkWorkersForLinux()
+#10 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(478): Workerman\Worker::forkWorkers()
+#11 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(46): Workerman\Worker::runAll()
+#12 {main}
+2018-07-31 00:57:16 pid:1087 Worker[1087] process terminated
+2018-07-31 00:57:16 pid:1086 worker[none:1087] exit with status 64000
+2018-07-31 00:57:17 pid:1088 Exception: You can't send(NULL) to client, you need to convert it to a string.  in /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Protocols/Websocket.php:236
+Stack trace:
+#0 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(336): Workerman\Protocols\Websocket::encode(NULL, Object(Workerman\Connection\TcpConnection))
+#1 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(22): Workerman\Connection\TcpConnection->send(NULL)
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), Object(stdClass))
+#3 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(668): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"user":"16","m...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #31)
+#5 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Events/Select.php(289): call_user_func_array(Array, Array)
+#6 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(2231): Workerman\Events\Select->loop()
+#7 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1356): Workerman\Worker->run()
+#8 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1188): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#9 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1162): Workerman\Worker::forkWorkersForLinux()
+#10 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1490): Workerman\Worker::forkWorkers()
+#11 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1439): Workerman\Worker::monitorWorkersForLinux()
+#12 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(480): Workerman\Worker::monitorWorkers()
+#13 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(46): Workerman\Worker::runAll()
+#14 {main}
+2018-07-31 00:57:17 pid:1088 Worker[1088] process terminated
+2018-07-31 00:57:17 pid:1086 worker[none:1088] exit with status 64000
+2018-07-31 00:57:20 pid:1089 Exception: You can't send(NULL) to client, you need to convert it to a string.  in /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Protocols/Websocket.php:236
+Stack trace:
+#0 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(336): Workerman\Protocols\Websocket::encode(NULL, Object(Workerman\Connection\TcpConnection))
+#1 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(22): Workerman\Connection\TcpConnection->send(NULL)
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), Object(stdClass))
+#3 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(668): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"user":"16","m...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#5 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Events/Select.php(289): call_user_func_array(Array, Array)
+#6 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(2231): Workerman\Events\Select->loop()
+#7 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1356): Workerman\Worker->run()
+#8 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1188): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#9 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1162): Workerman\Worker::forkWorkersForLinux()
+#10 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1490): Workerman\Worker::forkWorkers()
+#11 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1439): Workerman\Worker::monitorWorkersForLinux()
+#12 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(480): Workerman\Worker::monitorWorkers()
+#13 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(46): Workerman\Worker::runAll()
+#14 {main}
+2018-07-31 00:57:20 pid:1089 Worker[1089] process terminated
+2018-07-31 00:57:20 pid:1086 worker[none:1089] exit with status 64000
+2018-07-31 00:57:31 pid:1090 Exception: You can't send(NULL) to client, you need to convert it to a string.  in /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Protocols/Websocket.php:236
+Stack trace:
+#0 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(336): Workerman\Protocols\Websocket::encode(NULL, Object(Workerman\Connection\TcpConnection))
+#1 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(22): Workerman\Connection\TcpConnection->send(NULL)
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), Object(stdClass))
+#3 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(668): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"user":"16","m...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #34)
+#5 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Events/Select.php(289): call_user_func_array(Array, Array)
+#6 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(2231): Workerman\Events\Select->loop()
+#7 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1356): Workerman\Worker->run()
+#8 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1188): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#9 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1162): Workerman\Worker::forkWorkersForLinux()
+#10 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1490): Workerman\Worker::forkWorkers()
+#11 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1439): Workerman\Worker::monitorWorkersForLinux()
+#12 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(480): Workerman\Worker::monitorWorkers()
+#13 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(46): Workerman\Worker::runAll()
+#14 {main}
+2018-07-31 00:57:31 pid:1090 Worker[1090] process terminated
+2018-07-31 00:57:31 pid:1086 worker[none:1090] exit with status 64000
+2018-07-31 00:57:40 pid:1091 Exception: You can't send(NULL) to client, you need to convert it to a string.  in /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Protocols/Websocket.php:236
+Stack trace:
+#0 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(336): Workerman\Protocols\Websocket::encode(NULL, Object(Workerman\Connection\TcpConnection))
+#1 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(22): Workerman\Connection\TcpConnection->send(NULL)
+#2 [internal function]: {closure}(Object(Workerman\Connection\TcpConnection), Object(stdClass))
+#3 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Connection/TcpConnection.php(668): call_user_func(Object(Closure), Object(Workerman\Connection\TcpConnection), '{"user":"16","m...')
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #34)
+#5 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Events/Select.php(289): call_user_func_array(Array, Array)
+#6 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(2231): Workerman\Events\Select->loop()
+#7 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1356): Workerman\Worker->run()
+#8 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1188): Workerman\Worker::forkOneWorkerForLinux(Object(Workerman\Worker))
+#9 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1162): Workerman\Worker::forkWorkersForLinux()
+#10 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1490): Workerman\Worker::forkWorkers()
+#11 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(1439): Workerman\Worker::monitorWorkersForLinux()
+#12 /mnt/c/openServer/OpenServer/domains/social/vendor/workerman/workerman/Worker.php(480): Workerman\Worker::monitorWorkers()
+#13 /mnt/c/openServer/OpenServer/domains/social/app/core/server.php(46): Workerman\Worker::runAll()
+#14 {main}
+2018-07-31 00:57:40 pid:1091 Worker[1091] process terminated
+2018-07-31 00:57:40 pid:1086 worker[none:1091] exit with status 64000
+2018-07-31 00:58:58 pid:1086 Workerman[server.php] stopping ...
+2018-07-31 00:58:58 pid:1086 Workerman[server.php] has been stopped
