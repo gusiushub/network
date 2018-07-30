@@ -3,7 +3,8 @@
 use app\core\View;
 
 $user = $vars['model']->userId(htmlspecialchars($_GET['id']));
-
+$_SESSION['page']=1;
+$_GET['page']=1;
 if(isset($_POST['post'])){
     $vars['model']->post();
     View::redirect('/user/'.$_SESSION['id']);
@@ -12,6 +13,10 @@ if(isset($_POST['post'])){
 if(isset($_POST['addFriend'])){
         $vars['model']->addFriend();
         View::redirect('/user/'.$_GET['id']);
+}
+
+if(!empty($_POST['left'])){
+    var_dump($_GET);
 }
 $comment = $vars['model']->pagination(8,3,3,37);
 $model = $vars['model'];
@@ -44,7 +49,7 @@ $model = $vars['model'];
                             <?php } else { ?>
                                 <span class="label label-dange" style="color:white"><small>Online</small></span>
                             <?php } ?>
-                            <h1><?php echo $user['first_name'].' '.$user['last_name']; ?></h1>
+                            <?php echo $user['first_name'].' '.$user['last_name']; ?>
                             <?php if($_SESSION['id']!=$_GET['id']) { ?>
                            <form method="POST">
                                <button name="sms" class="btn btn-primary" type="submit" href="#"><a href="/dialog/<?php echo $_GET['id'];?>/">Написать</a></button>
@@ -105,7 +110,6 @@ $model = $vars['model'];
                             <?php
                             $postVar = $vars['model'];
                             $vars = $vars['model']->userPosts();
-                            //$likes = $var['model']->getLike($id);
                             foreach($vars as $var){
                                 if($_GET['id'] == $_SESSION['id']) {
                                     if (isset($_POST['del'.$var['id']])) {
@@ -135,7 +139,7 @@ $model = $vars['model'];
                                 <link rel="stylesheet" href="http://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css" />
 
                                 <style>
-                                    body{background:url(/../../template/default/images/bg/bg-1.png)}
+                                    /*body{background:url(/../../template/default/images/bg/bg-1.png)}*/
 
                                     .img-sm {
                                         width: 46px;
@@ -241,11 +245,10 @@ $model = $vars['model'];
                                                 <?php
                                                 $commentCount = $model->getComment($var['id']);
                                                 $commentCount = count($commentCount);
-                                                //var_dump($commentCount);
                                                 $commentId = $var['id'];
                                                 if ($commentCount>2) {
                                                     for ($j = 0; $j < 3 ; $j++) {
-                                                        $comment = $model->pagination(1, 3, 1, $commentId);
+                                                        $comment = $model->pagination(1, 3, $_GET['page'], $commentId);
                                                         ?>
                                                         <div class="media-block">
                                                             <a class="media-left" href="#"><img
@@ -286,9 +289,9 @@ $model = $vars['model'];
                                                     <nav class="text-center" >
                                                         <ul  class="pagination">
                                                             <li id="<?php echo 'left'.$var['id']; ?>" class="media-left" style="float: left;" >
-                                                                <a class="page-link" href="#" aria-label="Previous">
-                                                                    <span aria-hidden="true">&laquo;</span>
-                                                                    <span class="sr-only">Previous</span>
+                                                                <a class="page-link" href="/user/16/?id=<?php echo $var['id']; ?>&page=<?php echo $_SESSION['page']++ ;?>" aria-label="Previous">
+                                                                    <span  aria-hidden="true">&laquo;</span>
+                                                                    <span  class="sr-only">Previous</span>
                                                                 </a>
                                                             </li>
 
@@ -319,7 +322,6 @@ $model = $vars['model'];
                                                                 </div>
                                                                 <p><?php
                                                                     if (!empty($comment[$j])) {
-                                                                        //var_dump($comment[$i]['text']);
                                                                         echo $comment[$j]['text'];
                                                                     } ?></p>
                                                                 <div class="pad-ver">
@@ -357,7 +359,6 @@ $model = $vars['model'];
                                                             </div>
                                                             <p><?php
                                                                 if (!empty($comment[0])) {
-                                                                    //var_dump($comment[$i]['text']);
                                                                     echo $comment[0]['text'];
                                                                 }
 

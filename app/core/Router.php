@@ -27,6 +27,7 @@ class Router {
 
     public function getId()
     {
+
         $routes = explode('/',$_SERVER['REQUEST_URI']);
 
         if (!empty($routes[2]) ) {
@@ -51,7 +52,9 @@ class Router {
      * @return bool
      */
     public function math(){
-        $url = trim($_SERVER['REQUEST_URI'], '/');
+        $url = explode('?', $_SERVER['REQUEST_URI']);
+        $url = $url[0];
+        $url = trim($url, '/');
         foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
                 $this->params = $params;

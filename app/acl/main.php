@@ -19,7 +19,8 @@ return [
         'subscribers',
         'subscriptions',
         'comment',
-        'like'
+        'like',
+        'user/16/?id=100&page=1',
     ],
 
     'guest' => [
